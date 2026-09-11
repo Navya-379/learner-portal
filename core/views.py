@@ -21,7 +21,7 @@ from datetime import datetime
 from core.models import Course
 
 def home(request):
-    courses = Course.objects.all()[:6]  # show top 6 courses
+    courses = Course.objects.all()  # show top 6 courses
     return render(request, "home.html", {"courses": courses})
 
 def about(request):
