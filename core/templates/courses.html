@@ -1,32 +1,29 @@
 {% extends "base.html" %}
-{% block title %}Courses{% endblock %}
+{% load static %}
+{% block title %}All Courses{% endblock %}
 
 {% block content %}
-<section id="courses" class="py-5 bg-dark text-light">
+<section class="py-5">
   <div class="container">
-    <h2 class="mb-4 text-center text-warning">📚 Course Catalog</h2>
-    <div class="row g-4">
+    <h2 class="fw-bold text-center mb-4">All Courses</h2>
+    <div class="row">
       {% for course in courses %}
-        <div class="col-md-4">
-          <div class="card course-card h-100 border-warning shadow-lg bg-dark text-light">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm">
+            {% if course.image %}
+              <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
+            {% endif %}
             <div class="card-body">
-              <!-- Course name in gold -->
-              <h5 class="card-title text-warning fw-bold">{{ course.title }}</h5>
-
-              <!-- Side headings gold, values white -->
-              <p><strong>Duration:</strong> <span class="text-white">{{ course.duration }}</span></p>
-              <p><strong>Category:</strong> <span class="text-white">{{ course.category }}</span></p>
-
-              <!-- Description in white -->
-              <p class="text-white">{{ course.description|default:"No description available." }}</p>
-
-              <!-- Details button -->
-              <a href="{% url 'course_detail' course.id %}" class="btn btn-warning mt-2">View Details</a>
+              <h5 class="card-title">{{ course.title }}</h5>
+              <p class="card-text">{{ course.description|truncatewords:25 }}</p>
+              <p class="text-muted"><strong>Duration:</strong> {{ course.duration }}</p>
+              <p class="text-muted"><strong>Category:</strong> {{ course.category }}</p>
+              <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">View Details</a>
             </div>
           </div>
         </div>
       {% empty %}
-        <p class="text-center text-warning">No courses available yet.</p>
+        <p class="text-center">No courses available yet.</p>
       {% endfor %}
     </div>
   </div>
