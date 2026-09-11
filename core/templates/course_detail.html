@@ -11,8 +11,7 @@
         <h2 class="card-title text-warning fw-bold">{{ course.title }}</h2>
         <p><strong>Duration:</strong> {{ course.duration }}</p>
         <p><strong>Category:</strong> {{ course.category }}</p>
-        <p><class="text-warning">{{ course.description }}</p>
-
+        <p class="text-warning">{{ course.description }}</p>
 
         <!-- Enrollment Status -->
         {% if user.is_authenticated %}
@@ -57,9 +56,8 @@
             </li>
           {% empty %}
             <li class="list-group-item bg-dark text-warning border-warning">
-            No quizzes available yet.
+              No quizzes available yet.
             </li>
-
           {% endfor %}
         </ul>
 
