@@ -42,14 +42,26 @@ def course_detail(request, course_id):
     # Check if already enrolled
     enrolled = Enrollment.objects.filter(user=request.user, course=course).exists()
 
+    # Handle enrollment on POST
     if request.method == "POST" and not enrolled:
         Enrollment.objects.create(user=request.user, course=course)
-        return redirect("dashboard")  # or redirect back to course_detail
+        return redirect("dashboard")
+
+    # Get quizzes for this course
+    quizzes = course.quiz_set.all()  # assuming Quiz model has FK to Course
+
+    # Get progress if enrolled
+    progress = None
+    if enrolled:
+        progress = course.progress_set.filter(user=request.user).first()
 
     return render(request, "course_detail.html", {
         "course": course,
         "enrolled": enrolled,
+        "quizzes": quizzes,
+        "progress": progress,
     })
+
 
 def enroll_course(request, course_id):
     course = get_object_or_404(Course, id=course_id)
