@@ -7,11 +7,16 @@
     <div class="card shadow-lg border-warning bg-dark text-light">
       <div class="card-body p-4">
 
+        <!-- Course Image -->
+        {% if course.image %}
+          <img src="{{ course.image.url }}" class="img-fluid rounded mb-4" alt="{{ course.title }}">
+        {% endif %}
+
         <!-- Course Header -->
         <h2 class="card-title text-warning fw-bold">{{ course.title }}</h2>
         <p><strong>Duration:</strong> {{ course.duration }}</p>
         <p><strong>Category:</strong> {{ course.category }}</p>
-        <p class="text-warning">{{ course.description }}</p>
+        <p class="mt-3">{{ course.description }}</p>
 
         <!-- Enrollment Status -->
         {% if user.is_authenticated %}
