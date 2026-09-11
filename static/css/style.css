@@ -16,16 +16,6 @@ body {
   position: relative;
 }
 
-/* Dark background overlay */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: -1;
-  pointer-events: none;
-}
-
 /* ==============================
    CONTENT / CONTAINER
    ============================== */
@@ -43,10 +33,17 @@ body::before {
   position: relative;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.88) !important;
-  color: #ffffff !important;
   border-radius: 10px;
   border: 1px solid #ffc107;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
+  border-color: #ffc107;
 }
 
 .card-body {
@@ -57,27 +54,27 @@ body::before {
    COURSE TITLE / HEADINGS
    ============================== */
 
-.card-title,
-h2,
-h5 {
+/* Course title in gold */
+.card-title {
   color: #ffc107 !important;
   font-weight: bold;
+}
+
+/* Side headings (Duration, Category) in gold */
+.card p strong {
+  color: #ffc107 !important;
+  font-weight: 600;
 }
 
 /* ==============================
    COURSE INFORMATION
    ============================== */
 
+/* Course details and descriptions in white */
 .card p {
-  color: #FFD700 !important; /* pure gold for descriptions */
+  color: #ffffff !important;
   font-size: 16px;
   line-height: 1.6;
-}
-
-/* Labels such as Duration and Category */
-.card p strong {
-  color: #ffc107 !important;
-  font-weight: 600;
 }
 
 /* ==============================
@@ -86,7 +83,7 @@ h5 {
 
 .list-group-item {
   background-color: #000 !important;
-  color: #FFD700 !important; /* gold text */
+  color: #ffffff !important; /* white text */
   border: 1px solid #ffc107 !important;
 }
 
@@ -97,7 +94,7 @@ h5 {
 .alert {
   position: relative;
   z-index: 2;
-  color: #FFD700 !important; /* gold alert text */
+  color: #ffffff !important; /* white alert text */
   border: 1px solid #ffc107;
   background-color: rgba(0, 0, 0, 0.85);
 }

@@ -200,7 +200,6 @@ def dashboard(request):
 
 
 
-
 def signup_view(request):
     if request.method == "POST":
         form = CustomUserCreationForm(request.POST)

@@ -5,23 +5,22 @@
 <section id="courses" class="py-5 bg-dark text-light">
   <div class="container">
     <h2 class="mb-4 text-center text-warning">📚 Course Catalog</h2>
-    <div class="row">
+    <div class="row g-4">
       {% for course in courses %}
-        <div class="col-md-4 mb-4">
-          <div class="card h-100 border-warning shadow-lg bg-dark text-light">
+        <div class="col-md-4">
+          <div class="card course-card h-100 border-warning shadow-lg bg-dark text-light">
             <div class="card-body">
+              <!-- Course name in gold -->
               <h5 class="card-title text-warning fw-bold">{{ course.title }}</h5>
-              <p class="text-light mb-2"><strong>Duration:</strong> {{ course.duration }}</p>
-              <p class="text-light mb-2"><strong>Category:</strong> {{ course.category}}</p>
-              <p class="text-white">{{ course.description }}</p>
 
-              <!-- Debug line -->
-              <p style="color:#ffc107;">
-                DEBUG: {{ course.duration|default:"No duration" }} |
-                {{ course.category|default:"No category" }} |
-                {{ course.description|default:"No description available." }}
-              </p>
+              <!-- Side headings gold, values white -->
+              <p><strong>Duration:</strong> <span class="text-white">{{ course.duration }}</span></p>
+              <p><strong>Category:</strong> <span class="text-white">{{ course.category }}</span></p>
 
+              <!-- Description in white -->
+              <p class="text-white">{{ course.description|default:"No description available." }}</p>
+
+              <!-- Details button -->
               <a href="{% url 'course_detail' course.id %}" class="btn btn-warning mt-2">View Details</a>
             </div>
           </div>
