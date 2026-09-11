@@ -142,4 +142,4 @@ SESSION_COOKIE_SAMESITE = "Lax"
 SESSION_COOKIE_SECURE = False  # set True only if using HTTPS
 CSRF_COOKIE_SAMESITE = "Lax"
 CSRF_COOKIE_SECURE = False
-STATICFILES_STORAGE = 
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
