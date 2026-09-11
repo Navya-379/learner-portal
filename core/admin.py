@@ -73,9 +73,12 @@ class ProgressInline(admin.TabularInline):
     extra = 0
     readonly_fields = ("completed_units", "total_units")
 
-class CustomUserAdmin(UserAdmin):
+class CustomUserInlineAdmin(UserAdmin):
     inlines = [EnrollmentInline, QuizResultInline, ProgressInline]
     list_display = ("username", "email", "is_staff", "is_active", "date_joined")
     search_fields = ("username", "email")
     ordering = ("username",)
+
+admin.site.unregister(User)
+admin.site.register(User, CustomUserInlineAdmin)
 
