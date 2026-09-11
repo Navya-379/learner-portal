@@ -2,12 +2,12 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.auth.admin import UserAdmin
 from .models import Course, CustomUser, Enrollment, QuizResult, Progress, Profile, Assessment
-
 @admin.register(CustomUser)
-class CustomUserAdmin(admin.ModelAdmin):
-    list_display = ("username", "email", "role", "is_active", "is_staff")
-    list_filter = ("role", "is_active", "is_staff")
+class CustomUserAdmin(UserAdmin):
+    inlines = [EnrollmentInline, QuizResultInline, ProgressInline]
+    list_display = ("username", "email", "role", "is_active", "is_staff", "date_joined")
     search_fields = ("username", "email")
+    ordering = ("username",)
 
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
@@ -73,12 +73,4 @@ class ProgressInline(admin.TabularInline):
     extra = 0
     readonly_fields = ("completed_units", "total_units")
 
-class CustomUserInlineAdmin(UserAdmin):
-    inlines = [EnrollmentInline, QuizResultInline, ProgressInline]
-    list_display = ("username", "email", "is_staff", "is_active", "date_joined")
-    search_fields = ("username", "email")
-    ordering = ("username",)
-
-admin.site.unregister(User)
-admin.site.register(User, CustomUserInlineAdmin)
 
