@@ -1,0 +1,90 @@
+[
+  {
+    "model": "core.course",
+    "pk": 1,
+    "fields": {
+      "title": "Java Fullstack",
+      "category": "Fullstack",
+      "duration": "8–12 weeks",
+      "description": "Learn backend with Java and frontend with modern JS frameworks."
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 2,
+    "fields": {
+      "title": "Python Fullstack",
+      "category": "Fullstack",
+      "duration": "8–12 weeks",
+      "description": "Master Django for backend and Bootstrap for frontend."
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 3,
+    "fields": {
+      "title": "MERN Fullstack",
+      "category": "Fullstack",
+      "duration": "4–6 weeks",
+      "description": "MongoDB, Express, React, Node.js — complete MERN stack."
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 4,
+    "fields": {
+      "title": "AI / ML",
+      "category": "Artificial Intelligence",
+      "duration": "16 weeks",
+      "description": "Deep dive into machine learning and neural networks."
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 5,
+    "fields": {
+      "title": "Data Science",
+      "category": "Data",
+      "duration": "16 weeks",
+      "description": "Statistics, Python, and ML for data-driven insights."
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 6,
+    "fields": {
+      "title": "Data Analytics",
+      "category": "Data",
+      "duration": "8 weeks",
+      "description": "Excel, SQL, and visualization tools for analytics."
+    }
+  },
+
+  // Example quiz questions for Python Fullstack
+  {
+    "model": "core.quizquestion",
+    "pk": 1,
+    "fields": {
+      "course": 2,
+      "question": "Which Django command creates a new app?",
+      "option1": "python manage.py startapp",
+      "option2": "django-admin newapp",
+      "option3": "python manage.py createapp",
+      "option4": "django-admin startproject",
+      "correct_answer": "python manage.py startapp"
+    }
+  },
+  {
+    "model": "core.quizquestion",
+    "pk": 2,
+    "fields": {
+      "course": 2,
+      "question": "Which template language does Django use by default?",
+      "option1": "Jinja2",
+      "option2": "Django Template Language",
+      "option3": "Mako",
+      "option4": "Liquid",
+      "correct_answer": "Django Template Language"
+    }
+  }
+]

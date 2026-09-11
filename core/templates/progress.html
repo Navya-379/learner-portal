@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h3>Progress for {{ enrollment.course.title }}</h3>
+  {% if progress %}
+    <p>Completed Lessons: {{ progress.completed_lessons }} / {{ progress.total_lessons }}</p>
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" style="width: {{ completion }}%;" aria-valuenow="{{ completion }}" aria-valuemin="0" aria-valuemax="100">
+        {{ completion }}%
+      </div>
+    </div>
+  {% else %}
+    <div class="alert alert-info mt-3">
+      No progress recorded yet for this course.
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

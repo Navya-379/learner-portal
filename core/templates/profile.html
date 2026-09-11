@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="text-warning fw-bold mb-4">My Profile</h2>
+
+  <!-- Profile Info -->
+  <div class="card bg-dark border-warning text-light mb-4">
+    <div class="card-body">
+      <h4 class="card-title text-warning">{{ profile.full_name }}</h4>
+      <p><strong>Education:</strong> {{ profile.education }}</p>
+      <p><strong>Skills:</strong> {{ profile.skills }}</p>
+      <p><strong>Portfolio:</strong> 
+        {% if profile.portfolio_url %}
+          <a href="{{ profile.portfolio_url }}" target="_blank" class="text-warning">{{ profile.portfolio_url }}</a>
+        {% else %}
+          Not provided
+        {% endif %}
+      </p>
+      <p><strong>Resume:</strong> 
+        {% if profile.resume %}
+          <a href="{{ profile.resume.url }}" class="btn btn-sm btn-warning">Download Resume</a>
+        {% else %}
+          Not uploaded
+        {% endif %}
+      </p>
+    </div>
+  </div>
+
+  <!-- Edit Form -->
+  <div class="card bg-dark border-warning text-light">
+    <div class="card-body">
+      <h5 class="text-warning mb-3">Update Profile</h5>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-warning mt-3">Save Changes</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

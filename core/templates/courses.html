@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+<section id="courses" class="py-5 bg-dark text-light">
+  <div class="container">
+    <h2 class="mb-4 text-center text-warning">📚 Course Catalog</h2>
+    <div class="row">
+      {% for course in courses %}
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 border-warning shadow-lg bg-dark text-light">
+            <div class="card-body">
+              <h5 class="card-title text-warning fw-bold">{{ course.title }}</h5>
+              <p class="text-light mb-2"><strong>Duration:</strong> {{ course.duration }}</p>
+              <p class="text-light mb-2"><strong>Category:</strong> {{ course.category}}</p>
+              <p class="text-white">{{ course.description }}</p>
+
+              <!-- Debug line -->
+              <p style="color:#ffc107;">
+                DEBUG: {{ course.duration|default:"No duration" }} |
+                {{ course.category|default:"No category" }} |
+                {{ course.description|default:"No description available." }}
+              </p>
+
+              <a href="{% url 'course_detail' course.id %}" class="btn btn-warning mt-2">View Details</a>
+            </div>
+          </div>
+        </div>
+      {% empty %}
+        <p class="text-center text-warning">No courses available yet.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}

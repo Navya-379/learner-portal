@@ -1,0 +1,171 @@
+/* ==============================
+   GLOBAL STYLES
+   ============================== */
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: url("../updated.jpeg") no-repeat center center fixed;
+  background-size: cover;
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+  position: relative;
+}
+
+/* Dark background overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ==============================
+   CONTENT / CONTAINER
+   ============================== */
+
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ==============================
+   CARD
+   ============================== */
+
+.card {
+  position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.88) !important;
+  color: #ffffff !important;
+  border-radius: 10px;
+  border: 1px solid #ffc107;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.card-body {
+  color: #ffffff !important;
+}
+
+/* ==============================
+   COURSE TITLE / HEADINGS
+   ============================== */
+
+.card-title,
+h2,
+h5 {
+  color: #ffc107 !important;
+  font-weight: bold;
+}
+
+/* ==============================
+   COURSE INFORMATION
+   ============================== */
+
+.card p {
+  color: #FFD700 !important; /* pure gold for descriptions */
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Labels such as Duration and Category */
+.card p strong {
+  color: #ffc107 !important;
+  font-weight: 600;
+}
+
+/* ==============================
+   LIST GROUP ITEMS
+   ============================== */
+
+.list-group-item {
+  background-color: #000 !important;
+  color: #FFD700 !important; /* gold text */
+  border: 1px solid #ffc107 !important;
+}
+
+/* ==============================
+   ALERT
+   ============================== */
+
+.alert {
+  position: relative;
+  z-index: 2;
+  color: #FFD700 !important; /* gold alert text */
+  border: 1px solid #ffc107;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* ==============================
+   BUTTONS
+   ============================== */
+
+.btn-warning {
+  font-weight: bold;
+  color: #000000 !important;
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  border-color: #e0a800;
+  color: #000000 !important;
+}
+
+.btn-outline-light {
+  color: #ffffff !important;
+  border: 1px solid #ffffff;
+}
+
+.btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #000000 !important;
+}
+
+/* ==============================
+   LINKS
+   ============================== */
+
+a {
+  color: #ffc107;
+}
+
+a:hover {
+  color: #ffca2c;
+}
+
+a.text-warning:hover {
+  text-decoration: underline;
+}
+
+/* ==============================
+   PROGRESS BAR
+   ============================== */
+
+.progress {
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.progress-bar {
+  font-weight: bold;
+  background-color: #ffc107;
+  color: #000000;
+}
+
+/* ==============================
+   NAVBAR / FOOTER
+   ============================== */
+
+nav,
+footer {
+  position: relative;
+  z-index: 1;
+}

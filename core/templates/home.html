@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Learner Portal{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background: url("{% static 'updated.jpeg' %}") no-repeat center center/cover;
+    margin: 0;
+    padding: 0;
+  }
+  .overlay {
+    background-color: rgba(0,0,0,0.7);
+    padding: 2rem 0;
+  }
+</style>
+
+<!-- Hero Section -->
+<section id="home" class="text-center text-light overlay">
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <h1 class="fw-bold mb-2">🎓 Welcome to the Learner Portal</h1>
+    <p class="lead mb-2">Browse courses, enroll, take quizzes, and track your progress.</p>
+    <div>
+      <a href="{% url 'course_list' %}" class="btn btn-warning mx-2">Courses</a>
+      <a href="{% url 'dashboard' %}" class="btn btn-outline-light mx-2">Dashboard</a>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="text-light overlay">
+  <div class="container">
+    <h2 class="fw-bold text-center mb-2 text-warning">About AAPS Placements</h2>
+    <p class="text-center mb-2">
+      AAPS Placements is a career-focused training and placement platform dedicated to helping students and job seekers build strong technical skills and achieve successful careers in the IT industry...
+    </p>
+    <p class="text-center mb-2">
+      Our training programs are designed with a real-time industry approach, where students gain hands-on experience through live projects, expert mentorship, and structured learning paths...
+    </p>
+    <p class="text-center mb-0">
+      At AAPS Placements, we provide complete career support — from learning and practice to resume building and placement assistance...
+    </p>
+  </div>
+</section>
+{% endblock %}
