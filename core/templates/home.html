@@ -27,19 +27,17 @@
   </div>
 </section>
 
-
 <!-- About Section -->
 <section class="about-section text-light mt-5">
   <div class="container">
     <h2 class="fw-bold text-center mb-2 text-warning">About AAPS Placements</h2>
-    <p class="text-center mb-2">AAPS Placements is a career-focused training and placement platform dedicated to helping students and job seekers build strong technical skills and achieve successful careers in the IT industry. We believe that the right guidance, practical knowledge, and consistent support can transform any learner into an industry-ready professional.</p>
-    <p class="text-center mb-2">Our training programs are designed with a real-time industry approach, where students gain hands-on experience through live projects, expert mentorship, and structured learning paths. We focus not only on technical knowledge but also on improving communication skills, problem-solving ability, and interview confidence.</p>
-    <p class="text-center mb-0">At AAPS Placements, we provide complete career support — from learning and practice to resume building and placement assistance. Our goal is to bridge the gap between education and employment by preparing candidates to meet current industry demands and succeed in real-world job roles.</p>
-
-  
+    <p class="text-center mb-2">AAPS Placements is a career-focused training and placement platform dedicated to helping students and job seekers build strong technical skills and achieve successful careers in the IT industry.</p>
+    <p class="text-center mb-2">Our training programs are designed with a real-time industry approach, where students gain hands-on experience through live projects, expert mentorship, and structured learning paths.</p>
+    <p class="text-center mb-0">We provide complete career support — from learning and practice to resume building and placement assistance. Our goal is to bridge the gap between education and employment by preparing candidates to meet current industry demands.</p>
   </div>
 </section>
-<!-- Courses Section -->
+
+<!-- Top Courses Preview Section -->
 <section class="courses-section mt-5">
   <div class="container">
     <h2 class="fw-bold text-center mb-4 text-warning">Top Courses</h2>
@@ -47,9 +45,12 @@
       {% for course in courses %}
         <div class="col-md-4 mb-3">
           <div class="card shadow-sm h-100">
+            {% if course.image %}
+              <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
+            {% endif %}
             <div class="card-body">
               <h5 class="card-title">{{ course.title }}</h5>
-              <p class="card-text">{{ course.description|truncatewords:20 }}</p>
+              <p class="card-text">{{ course.short_description }}</p>
               <a href="{% url 'course_detail' course.id %}" class="btn btn-warning">View Details</a>
             </div>
           </div>
@@ -58,8 +59,9 @@
         <p class="text-center">No courses available yet.</p>
       {% endfor %}
     </div>
+    <div class="text-center mt-4">
+      <a href="{% url 'course_list' %}" class="btn btn-outline-warning">View All Courses</a>
+    </div>
   </div>
 </section>
-
-
 {% endblock %}
