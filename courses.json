@@ -1,0 +1,62 @@
+[
+  {
+    "model": "core.course",
+    "pk": 1,
+    "fields": {
+      "title": "Java FullStack",
+      "duration": "12 weeks",
+      "category": "Fullstack",
+      "description": "Comprehensive Java fullstack training."
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 2,
+    "fields": {
+      "title": "Python FullStack",
+      "duration": "10 weeks",
+      "category": "Fullstack",
+      "description": "Python fullstack development with Django."
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 3,
+    "fields": {
+      "title": "MERN FullStack",
+      "duration": "10 weeks",
+      "category": "Fullstack",
+      "description": "MongoDB, Express, React, Node.js fullstack."
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 4,
+    "fields": {
+      "title": "AI/ML",
+      "duration": "8 weeks",
+      "category": "AI/ML",
+      "description": "Machine learning and AI fundamentals."
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 5,
+    "fields": {
+      "title": "Data Analytics",
+      "duration": "6 weeks",
+      "category": "Data Analytics",
+      "description": "Data visualization and analytics techniques."
+    }
+  },
+  {
+    "model": "core.course",
+    "pk": 6,
+    "fields": {
+      "title": "Data Science",
+      "duration": "12 weeks",
+      "category": "Data Science",
+      "description": "End‑to‑end data science workflow."
+    }
+  }
+]
