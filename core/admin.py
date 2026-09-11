@@ -21,7 +21,7 @@ class ProgressInline(admin.TabularInline):
 # CustomUser admin
 @admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
-    inlines = [EnrollmentInline, QuizResultInline, ProgressInline]
+    
     list_display = ("username", "email", "role", "is_active", "is_staff", "date_joined")
     search_fields = ("username", "email")
     ordering = ("username",)
