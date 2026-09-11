@@ -10,7 +10,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.utils import timezone
-
+from django.shortcuts import render
 from django.db.models import Avg, Max, Count
 
 User = get_user_model()
@@ -24,6 +24,11 @@ def home(request):
     courses = Course.objects.all()[:6]  # show top 6 courses
     return render(request, "home.html", {"courses": courses})
 
+def about(request):
+    return render(request, 'about.html')
+
+def courses(request):
+    return render(request, 'courses.html')
 # Courses
 def course_list(request):
     courses = Course.objects.all()
