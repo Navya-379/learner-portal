@@ -41,21 +41,31 @@ def course_list(request):
 def course_detail(request, course_id):
     course = get_object_or_404(Course, id=course_id)
 
-    # Check if already enrolled
-    enrolled = Enrollment.objects.filter(user=request.user, course=course).exists()
+    # Get the user's enrollment for this course
+    enrollment = Enrollment.objects.filter(
+        user=request.user,
+        course=course
+    ).first()
+
+    enrolled = enrollment is not None
 
     # Handle enrollment on POST
     if request.method == "POST" and not enrolled:
-        Enrollment.objects.create(user=request.user, course=course)
+        enrollment = Enrollment.objects.create(
+            user=request.user,
+            course=course
+        )
         return redirect("dashboard")
 
     # Get quizzes for this course
-    quizzes = course.quiz_set.all()  # assuming Quiz model has FK to Course
+    quizzes = course.quiz_set.all()
 
-    # Get progress if enrolled
+    # Get progress through the enrollment
     progress = None
-    if enrolled:
-        progress = course.progress_set.filter(user=request.user).first()
+    if enrollment:
+        progress = Progress.objects.filter(
+            enrollment=enrollment
+        ).first()
 
     return render(request, "course_detail.html", {
         "course": course,
@@ -63,6 +73,7 @@ def course_detail(request, course_id):
         "quizzes": quizzes,
         "progress": progress,
     })
+
 
 
 def enroll_course(request, course_id):
