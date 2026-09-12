@@ -26,6 +26,8 @@ class CustomUserAdmin(UserAdmin):
     search_fields = ("username", "email")
     ordering = ("username",)
 
+@admin.site.register(Quiz)
+
 # Course admin
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
