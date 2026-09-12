@@ -62,10 +62,11 @@ def course_detail(request, course_id):
 
     # Get progress through the enrollment
     progress = None
-    if enrollment:
-        progress = Progress.objects.filter(
-            enrollment=enrollment
-        ).first()
+    # Get progress if enrolled
+progress = None
+if enrolled:
+    progress = course.progress_set.filter(user=request.user).first()
+
 
     return render(request, "course_detail.html", {
         "course": course,
