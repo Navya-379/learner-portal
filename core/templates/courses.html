@@ -6,28 +6,46 @@
 <section class="py-5 bg-light">
   <div class="container">
     <h2 class="fw-bold text-center mb-4">All Courses</h2>
+
+    <!-- Search & Filter -->
+    <form method="get" class="row mb-4">
+      <div class="col-md-6">
+        <input type="text" name="q" value="{{ query }}" class="form-control"
+               placeholder="Search by course title...">
+      </div>
+      <div class="col-md-4">
+        <select name="category" class="form-select">
+          <option value="">All Categories</option>
+          <option value="Fullstack" {% if category == "Fullstack" %}selected{% endif %}>Fullstack</option>
+          <option value="AI/ML" {% if category == "AI/ML" %}selected{% endif %}>AI/ML</option>
+          <option value="Frontend" {% if category == "Frontend" %}selected{% endif %}>Frontend</option>
+          <!-- Add more categories as needed -->
+        </select>
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-warning w-100">Filter</button>
+      </div>
+    </form>
+
+    <!-- Course Grid -->
     <div class="row">
       {% for course in courses %}
         <div class="col-md-4 mb-4">
           <div class="card h-100 shadow-sm">
             {% if course.image %}
               <img src="{{ course.image.url }}" class="card-img-top" alt="{{ course.title }}">
-            {% else %}
-              <img src="{% static 'default-course.jpg' %}" class="card-img-top" alt="Default course image">
             {% endif %}
             <div class="card-body">
               <h5 class="card-title">{{ course.title }}</h5>
               <p class="card-text">{{ course.description|truncatewords:25 }}</p>
-              <p class="text-muted mb-1"><strong>Duration:</strong> {{ course.duration }}</p>
-              <p class="text-muted mb-3"><strong>Category:</strong> {{ course.category }}</p>
+              <p class="text-muted"><strong>Duration:</strong> {{ course.duration }}</p>
+              <p class="text-muted"><strong>Category:</strong> {{ course.category }}</p>
               <a href="{% url 'course_detail' course.id %}" class="btn btn-primary">View Details</a>
             </div>
           </div>
         </div>
       {% empty %}
-        <div class="col-12">
-          <p class="text-center text-muted">No courses available yet.</p>
-        </div>
+        <p class="text-center text-muted">No courses found.</p>
       {% endfor %}
     </div>
   </div>
