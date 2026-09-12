@@ -36,7 +36,7 @@ urlpatterns = [
     path("my-courses/", views.my_courses, name="my_courses"),
     path("profile/", views.profile_view, name="profile"),
     path("my-results/", views.my_results, name="my_results"),
-
+    path("accounts/", include("django.contrib.auth.urls")),
     
 
     # 👇 Add this for homepage
