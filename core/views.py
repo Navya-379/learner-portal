@@ -32,7 +32,10 @@ def courses(request):
 # Courses
 def course_list(request):
     courses = Course.objects.all()
-    return render(request, "courses/course_list.html", {"courses": courses})
+    def course_list(request):
+    courses = Course.objects.all()
+    return render(request, "courses.html", {"courses": courses})
+
 
 
 @login_required
