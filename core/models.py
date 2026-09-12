@@ -26,8 +26,10 @@ class Course(models.Model):
     is_featured = models.BooleanField(default=False)
 
     def __str__(self):
-        # Always return a string
-        return f"{self.title} ({self.category})"
+        # Always return a string, even if fields are empty
+        title = self.title if self.title else "Untitled"
+        category = self.category if self.category else "Uncategorized"
+        return f"{title} ({category})"
   
 
 
@@ -77,7 +79,7 @@ class Quiz(models.Model):
 
 # Assessment model
 class Assessment(models.Model):
-    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="questions")
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, related_name="assessments")
     text = models.CharField(max_length=255)   # Question text
     option_a = models.CharField(max_length=100, default="N/A")
     option_b = models.CharField(max_length=100, default="N/A")
@@ -85,10 +87,11 @@ class Assessment(models.Model):
     option_d = models.CharField(max_length=100, default="N/A")
     answer = models.CharField(max_length=1, default="A")
 
-
     def __str__(self):
-        return f"{self.course.title} - {self.text[:30]}"
-
+        # Safe string representation
+        course_title = getattr(self.course, "title", "Unknown Course")
+        question_text = self.text if self.text else "No Question"
+        return f"{course_title} - {question_text[:30]}"
 
 # Progress model
 class Progress(models.Model):
