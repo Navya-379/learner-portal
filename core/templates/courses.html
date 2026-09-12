@@ -7,26 +7,6 @@
   <div class="container">
     <h2 class="fw-bold text-center mb-4">All Courses</h2>
 
-    <!-- Search & Filter -->
-    <form method="get" class="row mb-4">
-      <div class="col-md-6">
-        <input type="text" name="q" value="{{ query }}" class="form-control"
-               placeholder="Search by course title...">
-      </div>
-      <div class="col-md-4">
-        <select name="category" class="form-select">
-          <option value="">All Categories</option>
-          <option value="Fullstack" {% if category == "Fullstack" %}selected{% endif %}>Fullstack</option>
-          <option value="AI/ML" {% if category == "AI/ML" %}selected{% endif %}>AI/ML</option>
-          <option value="Frontend" {% if category == "Frontend" %}selected{% endif %}>Frontend</option>
-          <!-- Add more categories as needed -->
-        </select>
-      </div>
-      <div class="col-md-2">
-        <button type="submit" class="btn btn-warning w-100">Filter</button>
-      </div>
-    </form>
-
     <!-- Course Grid -->
     <div class="row">
       {% for course in courses %}
@@ -45,7 +25,7 @@
           </div>
         </div>
       {% empty %}
-        <p class="text-center text-muted">No courses found.</p>
+        <p class="text-center text-muted">No courses available yet.</p>
       {% endfor %}
     </div>
   </div>
