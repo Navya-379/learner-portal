@@ -28,7 +28,7 @@ def about(request):
     return render(request, 'about.html')
 
 @login_required
-def courses(request):
+def course_list(request):
     courses = Course.objects.all()
 
     enrolled_course_ids = set(
@@ -41,6 +41,7 @@ def courses(request):
         "courses": courses,
         "enrolled_course_ids": enrolled_course_ids,
     })
+
 
 # Courses
 def course_list(request):
