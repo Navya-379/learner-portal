@@ -27,8 +27,21 @@ def home(request):
 def about(request):
     return render(request, 'about.html')
 
+@login_required
 def courses(request):
-    return render(request, 'courses.html')
+    courses = Course.objects.all()
+
+    enrolled_course_ids = set(
+        Enrollment.objects.filter(
+            user=request.user
+        ).values_list("course_id", flat=True)
+    )
+
+    return render(request, "courses.html", {
+        "courses": courses,
+        "enrolled_course_ids": enrolled_course_ids,
+    })
+
 # Courses
 def course_list(request):
     courses = Course.objects.all()
