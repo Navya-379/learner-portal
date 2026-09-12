@@ -40,14 +40,14 @@
 
           {% if user.is_authenticated %}
             {% if course.id in enrolled_course_ids %}
-    <a href="{% url 'course_detail' course.id %}" class="btn btn-success">
-        Continue Course
-    </a>
-{% else %}
-    <a href="{% url 'enroll_course' course.id %}" class="btn btn-primary">
-        Enroll
-    </a>
-{% endif %}
+              <a href="{% url 'course_detail' course.id %}" class="btn btn-success">
+                Continue Course
+              </a>
+            {% else %}
+              <a href="{% url 'enroll_course' course.id %}" class="btn btn-primary">
+                Enroll
+              </a>
+            {% endif %}
 
           {% endif %}
 
