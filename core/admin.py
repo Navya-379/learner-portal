@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, Course, Enrollment, QuizResult, Progress, Profile, Assessment
+from .models import CustomUser, Course, Enrollment, QuizResult, Progress, Profile, Assessment, Quiz
 
 # Inline models for CustomUser
 class EnrollmentInline(admin.TabularInline):
