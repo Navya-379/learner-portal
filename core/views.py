@@ -41,6 +41,7 @@ def course_list(request):
 def course_detail(request, course_id):
     course = get_object_or_404(Course, id=course_id)
 
+    # Find the current user's enrollment for this course
     enrollment = Enrollment.objects.filter(
         user=request.user,
         course=course
@@ -48,6 +49,7 @@ def course_detail(request, course_id):
 
     enrolled = enrollment is not None
 
+    # Handle enrollment
     if request.method == "POST" and not enrolled:
         enrollment = Enrollment.objects.create(
             user=request.user,
@@ -55,8 +57,10 @@ def course_detail(request, course_id):
         )
         return redirect("dashboard")
 
+    # Get quizzes for this course
     quizzes = course.quiz_set.all()
 
+    # Get progress through the enrollment
     progress = None
     if enrollment:
         progress = Progress.objects.filter(
@@ -69,6 +73,7 @@ def course_detail(request, course_id):
         "quizzes": quizzes,
         "progress": progress,
     })
+
 
 
 
