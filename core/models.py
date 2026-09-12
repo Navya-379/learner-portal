@@ -67,6 +67,13 @@ class QuizResult(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.course.title} ({self.score}/{self.total})"
 
+class Quiz(models.Model):
+    course = models.ForeignKey("Course", on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+
+    def __str__(self):
+        return f"{self.title} ({self.course.title})"
+
 
 # Assessment model
 class Assessment(models.Model):
