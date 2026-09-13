@@ -23,9 +23,25 @@
             Your Score: <span class="text-warning">{{ result.score }}</span> / {{ result.total }}
           </p>
           <p class="lead">
-            Percentage: <span class="text-warning">
-              {{ result.score|floatformat:0 }}/{{ result.total }} ({{ result.score|divisibleby:result.total|floatformat:0 }}%)
-            </span>
+            percentage = (score / total) * 100 if total > 0 else 0
+
+result, created = QuizResult.objects.update_or_create(
+    user=request.user,
+    course=course,
+    defaults={
+        "score": score,
+        "total": total,
+        "passed": (score >= total/2),
+        "taken_at": timezone.now(),
+    }
+)
+
+return render(request, "quiz_result.html", {
+    "course": course,
+    "result": result,
+    "percentage": percentage
+})
+
           </p>
 
           {% if result.passed %}
