@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Courses{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="fw-bold text-warning mb-4 text-center">📚 Course Catalog</h2>
+  <div class="row">
+    {% for course in courses %}
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm border-warning">
+          <div class="card-body">
+            <!-- Course Title -->
+            <h5 class="card-title text-warning fw-bold">
+              {{ course.title }}
+              {% if user.is_authenticated and course.id in enrolled_course_ids %}
+                <span class="badge bg-success ms-2">Enrolled</span>
+              {% endif %}
+            </h5>
+            
+            <!-- Duration -->
+            <p class="mb-2"><strong>Duration:</strong> {{ course.duration }}</p>
+            
+            <!-- Category -->
+            <p class="mb-2"><strong>Category:</strong> {{ course.category }}</p>
+            
+            <!-- Description -->
+            <p class="text-muted">
+              {{ course.description|default:"No description available." }}
+            </p>
+            
+            <!-- Details Button -->
+            <a href="{% url 'course_detail' course.id %}" class="btn btn-warning mt-3">View Details</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center text-light">No courses available yet.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
