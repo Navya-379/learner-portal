@@ -1,0 +1,223 @@
+[
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 1,
+      "text": "Which keyword is used to define a function in Python?",
+      "option_a": "func",
+      "option_b": "def",
+      "option_c": "function",
+      "option_d": "lambda",
+      "answer": "B"
+    }
+  },
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 1,
+      "text": "What is the output of print(2**3)?",
+      "option_a": "6",
+      "option_b": "8",
+      "option_c": "9",
+      "option_d": "Error",
+      "answer": "B"
+    }
+  },
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 1,
+      "text": "Which data type is immutable in Python?",
+      "option_a": "List",
+      "option_b": "Dictionary",
+      "option_c": "Tuple",
+      "option_d": "Set",
+      "answer": "C"
+    }
+  },
+
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 2,
+      "text": "Which HTML tag is used for the largest heading?",
+      "option_a": "<h6>",
+      "option_b": "<h1>",
+      "option_c": "<head>",
+      "option_d": "<title>",
+      "answer": "B"
+    }
+  },
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 2,
+      "text": "Which CSS property controls text size?",
+      "option_a": "font-size",
+      "option_b": "text-style",
+      "option_c": "size",
+      "option_d": "text-size",
+      "answer": "A"
+    }
+  },
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 2,
+      "text": "Bootstrap is mainly used for?",
+      "option_a": "Database management",
+      "option_b": "Responsive design",
+      "option_c": "Server-side scripting",
+      "option_d": "Image editing",
+      "answer": "B"
+    }
+  },
+
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 3,
+      "text": "Which SQL command is used to retrieve data?",
+      "option_a": "GET",
+      "option_b": "SELECT",
+      "option_c": "FETCH",
+      "option_d": "SHOW",
+      "answer": "B"
+    }
+  },
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 3,
+      "text": "Which keyword is used to filter results in SQL?",
+      "option_a": "WHERE",
+      "option_b": "HAVING",
+      "option_c": "FILTER",
+      "option_d": "BY",
+      "answer": "A"
+    }
+  },
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 3,
+      "text": "Which SQL clause is used to sort results?",
+      "option_a": "ORDER BY",
+      "option_b": "SORT",
+      "option_c": "GROUP BY",
+      "option_d": "RANK",
+      "answer": "A"
+    }
+  },
+
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 4,
+      "text": "Which algorithm is used in supervised learning?",
+      "option_a": "K-Means",
+      "option_b": "Linear Regression",
+      "option_c": "Apriori",
+      "option_d": "DBSCAN",
+      "answer": "B"
+    }
+  },
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 4,
+      "text": "Which library is commonly used for ML in Python?",
+      "option_a": "NumPy",
+      "option_b": "Pandas",
+      "option_c": "Scikit-learn",
+      "option_d": "Matplotlib",
+      "answer": "C"
+    }
+  },
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 4,
+      "text": "Which metric is used to evaluate classification models?",
+      "option_a": "Accuracy",
+      "option_b": "Mean Squared Error",
+      "option_c": "R²",
+      "option_d": "Variance",
+      "answer": "A"
+    }
+  },
+
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 5,
+      "text": "Which HTTP method is used to submit form data?",
+      "option_a": "GET",
+      "option_b": "POST",
+      "option_c": "PUT",
+      "option_d": "DELETE",
+      "answer": "B"
+    }
+  },
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 5,
+      "text": "Which framework is used for Python web development?",
+      "option_a": "Django",
+      "option_b": "React",
+      "option_c": "Angular",
+      "option_d": "Spring",
+      "answer": "A"
+    }
+  },
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 5,
+      "text": "Which template engine does Django use?",
+      "option_a": "Jinja2",
+      "option_b": "Django Template Language",
+      "option_c": "Mako",
+      "option_d": "Smarty",
+      "answer": "B"
+    }
+  },
+
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 6,
+      "text": "Which Git command is used to clone a repository?",
+      "option_a": "git copy",
+      "option_b": "git clone",
+      "option_c": "git pull",
+      "option_d": "git init",
+      "answer": "B"
+    }
+  },
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 6,
+      "text": "Which file is used to define dependencies in Python?",
+      "option_a": "requirements.txt",
+      "option_b": "dependencies.json",
+      "option_c": "packages.xml",
+      "option_d": "setup.cfg",
+      "answer": "A"
+    }
+  },
+  {
+    "model": "core.assessment",
+    "fields": {
+      "course": 6,
+      "text": "Which platform is commonly used for deploying Django apps?",
+      "option_a": "Render",
+      "option_b": "Heroku",
+      "option_c": "AWS",
+      "option_d": "All of the above",
+      "answer": "D"
+    }
+  }
+]
