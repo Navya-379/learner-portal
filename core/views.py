@@ -349,3 +349,8 @@ def update_profile(request):
         form = ProfileForm(instance=profile)
 
     return render(request, "profile_edit.html", {"form": form, "profile": profile})
+
+def quiz_list(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+    quizzes = Quiz.objects.filter(course=course)
+    return render(request, "quiz_list.html", {"course": course, "quizzes": quizzes})
