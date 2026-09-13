@@ -101,11 +101,12 @@ def enroll_course(request, course_id):
 
     if created:
         messages.success(request, f"You have successfully enrolled in {course.title}!")
-        return redirect("dashboard")
+        # Redirect straight to quiz list for this course
+        return redirect("quiz_list", course_id=course.id)
     else:
         messages.info(request, f"You are already enrolled in {course.title}.")
-        return redirect("course_detail", course_id=course.id)
-
+        # Redirect to dashboard if already enrolled
+        return redirect("dashboard")
 
 
 
