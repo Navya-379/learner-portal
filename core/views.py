@@ -130,6 +130,9 @@ def take_quiz(request, course_id):
             if selected and selected.strip().upper() == q.answer.strip().upper():
                 score += 1
 
+        # ✅ Calculate percentage here
+        percentage = (score / total) * 100 if total > 0 else 0
+
         result, created = QuizResult.objects.update_or_create(
             user=request.user,
             course=course,
@@ -143,7 +146,8 @@ def take_quiz(request, course_id):
 
         return render(request, "quiz_result.html", {
             "course": course,
-            "result": result
+            "result": result,
+            "percentage": percentage
         })
 
     # ✅ GET request shows quiz
@@ -151,8 +155,6 @@ def take_quiz(request, course_id):
         "course": course,
         "questions": questions
     })
-
-
 
 
 def quiz_result(request, course_id):
