@@ -39,4 +39,11 @@ urlpatterns = [
         name="view_progress",
     ),
     path("upload_resume/", views.upload_resume, name="upload_resume"),
+    path("courses/<int:course_id>/quizzes/", views.quiz_list, name="quiz_list"),
+
+    # Course → Take quiz
+    path("courses/<int:course_id>/quiz/", views.take_quiz, name="take_quiz"),
+
+    # My results page
+    path("my-results/", views.my_results, name="my_results"),
 ]
