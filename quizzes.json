@@ -1,0 +1,44 @@
+[
+  {
+    "model": "core.quiz",
+    "fields": {
+      "course": 1,
+      "title": "Java FullStack Quiz"
+    }
+  },
+  {
+    "model": "core.quiz",
+    "fields": {
+      "course": 2,
+      "title": "Python FullStack Quiz"
+    }
+  },
+  {
+    "model": "core.quiz",
+    "fields": {
+      "course": 3,
+      "title": "MERN FullStack Quiz"
+    }
+  },
+  {
+    "model": "core.quiz",
+    "fields": {
+      "course": 4,
+      "title": "AI/ML Quiz"
+    }
+  },
+  {
+    "model": "core.quiz",
+    "fields": {
+      "course": 5,
+      "title": "Data Analytics Quiz"
+    }
+  },
+  {
+    "model": "core.quiz",
+    "fields": {
+      "course": 6,
+      "title": "Data Science Quiz"
+    }
+  }
+]
