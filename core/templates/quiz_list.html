@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Quizzes{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="text-warning">Quizzes for {{ course.title }}</h2>
+  <ul class="list-group mt-3">
+    {% for quiz in quizzes %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        {{ quiz.title }}
+        <a href="{% url 'take_quiz' course.id %}" class="btn btn-sm btn-warning">Take Quiz</a>
+      </li>
+    {% empty %}
+      <li class="list-group-item">No quizzes available yet.</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}
