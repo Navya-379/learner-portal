@@ -28,12 +28,12 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(Quiz)
 
-# Course admin
 @admin.register(Course)
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ("title", "duration", "category", "is_featured")
-    search_fields = ("title", "category", "description", "short_description")
-    list_filter = ("category", "is_featured")
+    list_display = ("title", "duration", "category")
+    search_fields = ("title", "category")
+    list_filter = ("category",)
+
 
 # Enrollment admin
 @admin.register(Enrollment)
