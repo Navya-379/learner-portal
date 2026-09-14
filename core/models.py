@@ -47,6 +47,7 @@ class Enrollment(models.Model):
 class Profile(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     full_name = models.CharField(max_length=100, blank=True)
+    bio = models.TextField(blank=True)   # ✅ add this
     education = models.CharField(max_length=100, blank=True)
     skills = models.TextField(blank=True)
     portfolio_url = models.URLField(blank=True)
