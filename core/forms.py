@@ -14,11 +14,11 @@ class CustomUserCreationForm(UserCreationForm):
         fields = ("username", "email", "password1", "password2")
 
     def save(self, commit=True):
-    user = super().save(commit=commit)
-    Profile.objects.create(
-        user=user,
-        education=self.cleaned_data.get("education"),
-        skills=self.cleaned_data.get("skills"),
+        user = super().save(commit=commit)
+        Profile.objects.create(
+            user=user,
+            education=self.cleaned_data.get("education"),
+            skills=self.cleaned_data.get("skills"),
     )
     return user
 
