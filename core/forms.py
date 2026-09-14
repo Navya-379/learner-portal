@@ -19,8 +19,8 @@ class CustomUserCreationForm(UserCreationForm):
             user=user,
             education=self.cleaned_data.get("education"),
             skills=self.cleaned_data.get("skills"),
-    )
-    return user
+        )
+        return user
 
 
 
