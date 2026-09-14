@@ -251,7 +251,7 @@ def dashboard(request):
 
 def signup_view(request):
     if request.method == "POST":
-        form = CustomUserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             user = form.save()
             # Ensure Profile is linked correctly
