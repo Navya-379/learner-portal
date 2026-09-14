@@ -4,26 +4,29 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import CustomUser
 
 class CustomUserCreationForm(UserCreationForm):
-    # Extra fields for profile
+    full_name = forms.CharField(required=False)
     bio = forms.CharField(required=False, widget=forms.Textarea(attrs={"rows":3}))
-    skills = forms.CharField(required=False)
     education = forms.CharField(required=False)
+    skills = forms.CharField(required=False)
+    portfolio_url = forms.URLField(required=False)
+    resume = forms.FileField(required=False)
 
     class Meta(UserCreationForm.Meta):
         model = CustomUser
         fields = ("username", "email", "password1", "password2")
-        def save(self, commit=True):
-            user = super().save(commit=commit)
-            Profile.objects.create(
-                user=user,
-                full_name=self.cleaned_data.get("full_name"),
-                bio=self.cleaned_data.get("bio"),
-                education=self.cleaned_data.get("education"),
-                skills=self.cleaned_data.get("skills"),
+
+    def save(self, commit=True):
+        user = super().save(commit=commit)
+        Profile.objects.create(
+            user=user,
+            full_name=self.cleaned_data.get("full_name"),
+            bio=self.cleaned_data.get("bio"),
+            education=self.cleaned_data.get("education"),
+            skills=self.cleaned_data.get("skills"),
+            portfolio_url=self.cleaned_data.get("portfolio_url"),
+            resume=self.cleaned_data.get("resume"),
         )
         return user
-
-
 
 
 class ProfileForm(forms.ModelForm):
