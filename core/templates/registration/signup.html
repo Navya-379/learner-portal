@@ -27,7 +27,51 @@
             <!-- Signup form -->
             <form method="post" enctype="multipart/form-data">
               {% csrf_token %}
-              {{ form.as_p }}
+
+              <div class="mb-3">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+              </div>
+              <div class="mb-3">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+              </div>
+              <div class="mb-3">
+                {{ form.password1.label_tag }}
+                {{ form.password1 }}
+              </div>
+              <div class="mb-3">
+                {{ form.password2.label_tag }}
+                {{ form.password2 }}
+              </div>
+
+              <hr class="text-warning">
+
+              <div class="mb-3">
+                {{ form.full_name.label_tag }}
+                {{ form.full_name }}
+              </div>
+              <div class="mb-3">
+                {{ form.bio.label_tag }}
+                {{ form.bio }}
+              </div>
+              <div class="mb-3">
+                {{ form.education.label_tag }}
+                {{ form.education }}
+              </div>
+              <div class="mb-3">
+                {{ form.skills.label_tag }}
+                {{ form.skills }}
+              </div>
+              <div class="mb-3">
+                {{ form.portfolio_url.label_tag }}
+                {{ form.portfolio_url }}
+              </div>
+              <div class="mb-3">
+                {{ form.resume.label_tag }}
+                {{ form.resume }}
+              </div>
+
               <button type="submit" class="btn btn-warning w-100 mt-3">Sign Up</button>
             </form>
 
