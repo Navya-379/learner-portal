@@ -12,15 +12,17 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = CustomUser
         fields = ("username", "email", "password1", "password2")
-
-    def save(self, commit=True):
-        user = super().save(commit=commit)
-        Profile.objects.create(
-            user=user,
-            education=self.cleaned_data.get("education"),
-            skills=self.cleaned_data.get("skills"),
+        def save(self, commit=True):
+            user = super().save(commit=commit)
+            Profile.objects.create(
+                user=user,
+                full_name=self.cleaned_data.get("full_name"),
+                bio=self.cleaned_data.get("bio"),
+                education=self.cleaned_data.get("education"),
+                skills=self.cleaned_data.get("skills"),
         )
         return user
+
 
 
 
