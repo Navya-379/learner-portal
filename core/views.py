@@ -254,8 +254,8 @@ def signup_view(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # Create a profile automatically
-            Profile.objects.create(user=user)
+            # Ensure Profile is linked correctly
+            Profile.objects.get_or_create(user=user)
             messages.success(request, "🎉 Account created successfully! Please log in.")
             return redirect("login")
         else:
