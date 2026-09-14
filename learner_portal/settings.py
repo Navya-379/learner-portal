@@ -145,3 +145,5 @@ SESSION_COOKIE_SECURE = False  # set True only if using HTTPS
 CSRF_COOKIE_SAMESITE = "Lax"
 CSRF_COOKIE_SECURE = False
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+ALLOWED_HOSTS = ["learner-portal-9qc0.onrender.com", "127.0.0.1", "localhost"]
+
