@@ -10,7 +10,6 @@
           <div class="card-body">
             <h2 class="text-warning mb-4 text-center">Create Account</h2>
 
-            <!-- Flash messages (optional, if not already in base.html) -->
             {% if messages %}
               {% for message in messages %}
                 <div class="alert 
@@ -26,7 +25,7 @@
             {% endif %}
 
             <!-- Signup form -->
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
               {% csrf_token %}
               {{ form.as_p }}
               <button type="submit" class="btn btn-warning w-100 mt-3">Sign Up</button>
