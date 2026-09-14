@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',  # 👈 your app
+    'core.apps.CoreConfig',  # 👈 your app
 ]
 AUTH_USER_MODEL = "core.CustomUser"
 
