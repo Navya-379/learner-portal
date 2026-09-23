@@ -30,10 +30,10 @@
       <p><strong>{{ enrollment.course.title }}</strong></p>
       <div class="progress mb-3">
         <div class="progress-bar bg-warning" role="progressbar"
-             style="width: {{ progress_data.enrollment.course.id.completion }}%;"
-             aria-valuenow="{{ progress_data.enrollment.course.id.completion }}"
+             style="width: {{ progress_data|dict_get:enrollment.course.id.completion }}%;"
+             aria-valuenow="{{ progress_data|dict_get:enrollment.course.id.completion }}"
              aria-valuemin="0" aria-valuemax="100">
-          {{ progress_data.enrollment.course.id.completion }}%
+          {{ progress_data|dict_get:enrollment.course.id.completion }}%
         </div>
       </div>
     {% empty %}
