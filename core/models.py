@@ -96,7 +96,7 @@ class Assessment(models.Model):
 
 # Progress model
 class Progress(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # new direct link
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)  # 👈 default superuser ID
     enrollment = models.OneToOneField(Enrollment, on_delete=models.CASCADE)
     completed_units = models.PositiveIntegerField(default=0)
     total_units = models.PositiveIntegerField(default=0)
