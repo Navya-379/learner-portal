@@ -106,6 +106,6 @@ class Progress(models.Model):
         return (self.completed_units / self.total_units) * 100
 
     def __str__(self):
-    user = getattr(self.enrollment.user, "username", "Unknown User")
-    course = getattr(self.enrollment.course, "title", "Unknown Course")
-    return f"{user} - {course} ({self.completion_percentage():.2f}%)"
+        user = getattr(self.enrollment.user, "username", "Unknown User")
+        course = getattr(self.enrollment.course, "title", "Unknown Course")
+        return f"{user} - {course} ({self.completion_percentage():.2f}%)"
