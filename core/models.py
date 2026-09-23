@@ -96,16 +96,15 @@ class Assessment(models.Model):
 
 # Progress model
 class Progress(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # new direct link
     enrollment = models.OneToOneField(Enrollment, on_delete=models.CASCADE)
     completed_units = models.PositiveIntegerField(default=0)
     total_units = models.PositiveIntegerField(default=0)
 
     def completion_percentage(self):
-        if self.total_units == 0:
-            return 0
-        return (self.completed_units / self.total_units) * 100
+        return (self.completed_units / self.total_units) * 100 if self.total_units else 0
 
     def __str__(self):
-        user = getattr(self.enrollment.user, "username", "Unknown User")
+        user = getattr(self.user, "username", "Unknown User")
         course = getattr(self.enrollment.course, "title", "Unknown Course")
         return f"{user} - {course} ({self.completion_percentage():.2f}%)"
