@@ -220,32 +220,44 @@ def profile_view(request):
 
 @login_required
 def dashboard(request):
-    # Get all enrollments for the logged-in user
-    enrollments = Enrollment.objects.filter(user=request.user).select_related("course")
+enrollments = Enrollment.objects.filter(
+user=request.user
+).select_related("course")
 
-    # Get all quiz results for the logged-in user
-    results = QuizResult.objects.filter(user=request.user).select_related("course")
+```
+results = QuizResult.objects.filter(
+    user=request.user
+).select_related("course").order_by("-taken_at")
 
-    # Map course_id → latest quiz result
-    course_results = {}
-    for r in results.order_by("-taken_at"):
-        if r.course.id not in course_results:
-            course_results[r.course.id] = r
+# Attach progress directly to each enrollment
+for enrollment in enrollments:
+    progress = Progress.objects.filter(
+        enrollment=enrollment
+    ).first()
 
-    # Map course_id → progress completion percentage
-    progress_data = {}
-    for enrollment in enrollments:
-        progress = Progress.objects.filter(enrollment=enrollment).first()
-        completion = progress.completion_percentage() if progress else 0
-        progress_data[enrollment.course.id] = {"completion": round(completion, 2)}
+    if progress:
+        enrollment.completion = round(
+            progress.completion_percentage(), 2
+        )
+    else:
+        enrollment.completion = 0
 
-    context = {
-        "enrollments": enrollments,
-        "results": results,
-        "course_results": course_results,
-        "progress_data": progress_data,
-    }
-    return render(request, "dashboard.html", context)
+# Keep only the latest quiz result for each course
+course_results = {}
+
+for result in results:
+    if result.course_id not in course_results:
+        course_results[result.course_id] = result
+
+context = {
+    "enrollments": enrollments,
+    "results": results,
+    "course_results": course_results.values(),
+}
+
+return render(request, "dashboard.html", context)
+```
+
 
 
 
