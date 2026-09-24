@@ -1,8 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserCreationForm
-from .models import Course, Enrollment, QuizResult, Profile, Assessment, Progress
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from .models import Course, Enrollment, QuizResult, Profile, Assessment, Progress, Quiz
 from .forms import ProfileForm
 from .forms import CustomUserCreationForm
 from .models import Profile
