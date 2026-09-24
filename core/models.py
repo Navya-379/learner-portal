@@ -96,13 +96,19 @@ class Assessment(models.Model):
 
 # Progress model
 class Progress(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, default=1)  # 👈 default superuser ID
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
     enrollment = models.OneToOneField(Enrollment, on_delete=models.CASCADE)
     completed_units = models.PositiveIntegerField(default=0)
     total_units = models.PositiveIntegerField(default=0)
 
     def completion_percentage(self):
-        return (self.completed_units / self.total_units) * 100 if self.total_units else 0
+        return (
+            (self.completed_units / self.total_units) * 100
+            if self.total_units else 0
+        )
 
     def __str__(self):
         user = getattr(self.user, "username", "Unknown User")
