@@ -224,12 +224,10 @@ def dashboard(request):
         user=request.user
     ).select_related("course")
 
-```
     results = QuizResult.objects.filter(
         user=request.user
     ).select_related("course").order_by("-taken_at")
 
-# Attach progress directly to each enrollment
     for enrollment in enrollments:
         progress = Progress.objects.filter(
             enrollment=enrollment
@@ -238,11 +236,10 @@ def dashboard(request):
         if progress:
             enrollment.completion = round(
                 progress.completion_percentage(), 2
-             )
+            )
         else:
             enrollment.completion = 0
 
-# Keep only the latest quiz result for each course
     course_results = {}
 
     for result in results:
@@ -255,8 +252,7 @@ def dashboard(request):
         "course_results": course_results.values(),
     }
 
-return render(request, "dashboard.html", context)
-```
+    return render(request, "dashboard.html", context)
 
 
 
