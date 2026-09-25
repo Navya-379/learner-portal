@@ -111,11 +111,15 @@ def enroll_course(request, course_id):
 
 
 
+
+@login_required
 def take_quiz(request, course_id):
     course = get_object_or_404(Course, id=course_id)
+
     questions = Assessment.objects.filter(course=course)
 
     if request.method == "POST":
+
         if not questions.exists():
             return render(request, "quiz_result.html", {
                 "course": course,
@@ -126,36 +130,43 @@ def take_quiz(request, course_id):
         score = 0
         total = questions.count()
 
-        for q in questions:
-            selected = request.POST.get(f"q{q.id}")
-            if selected and selected.strip().upper() == q.answer.strip().upper():
-                score += 1
+        # Check answers
+        for question in questions:
+            selected_answer = request.POST.get(f"q{question.id}")
 
-        # ✅ Calculate percentage here
+            if selected_answer:
+                if selected_answer.strip().upper() == question.answer.strip().upper():
+                    score += 1
+
+        # Calculate percentage
         percentage = (score / total) * 100 if total > 0 else 0
 
+        # Create or update result
         result, created = QuizResult.objects.update_or_create(
             user=request.user,
             course=course,
             defaults={
                 "score": score,
                 "total": total,
-                "passed": (score >= total/2),
+                "passed": percentage >= 60,
                 "taken_at": timezone.now(),
             }
         )
 
+        # Show result page
         return render(request, "quiz_result.html", {
             "course": course,
             "result": result,
-            "percentage": percentage
+            "percentage": percentage,
         })
 
-    # ✅ GET request shows quiz
+    # GET request → show questions
     return render(request, "take_quiz.html", {
         "course": course,
-        "questions": questions
+        "questions": questions,
     })
+
+
 
 
 def quiz_result(request, course_id):
