@@ -12,13 +12,11 @@ urlpatterns = [
 
     # Courses
     path("courses/", views.course_list, name="course_list"),
-
     path(
         "courses/<int:course_id>/",
         views.course_detail,
         name="course_detail",
     ),
-
     path(
         "courses/<int:course_id>/enroll/",
         views.enroll_course,
@@ -45,13 +43,11 @@ urlpatterns = [
 
     # Profile
     path("profile/", views.profile_view, name="profile"),
-
     path(
         "progress/<int:enrollment_id>/",
         views.view_progress,
         name="view_progress",
     ),
-
     path(
         "upload_resume/",
         views.upload_resume,
@@ -65,4 +61,3 @@ urlpatterns = [
         name="my_results",
     ),
 ]
-
