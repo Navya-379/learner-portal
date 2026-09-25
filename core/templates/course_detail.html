@@ -26,6 +26,7 @@
             </div>
             <a href="{% url 'dashboard' %}" class="btn btn-warning mt-3">Go to Dashboard</a>
             <a href="{% url 'quiz_list' course.id %}" class="btn btn-outline-light mt-3">Take Quiz</a>
+            <a href="#" class="btn btn-success mt-3"> 💳 Payment </a>
           {% else %}
             <form method="post" action="{% url 'enroll_course' course.id %}">
               {% csrf_token %}
