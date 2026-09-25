@@ -361,7 +361,14 @@ def update_profile(request):
 
     return render(request, "profile_edit.html", {"form": form, "profile": profile})
 
+
+@login_required
 def quiz_list(request, course_id):
     course = get_object_or_404(Course, id=course_id)
-    quizzes = Quiz.objects.filter(course=course)
-    return render(request, "quiz_list.html", {"course": course, "quizzes": quizzes})
+
+    questions = Assessment.objects.filter(course=course)
+
+    return render(request, "take_quiz.html", {
+        "course": course,
+        "questions": questions,
+    })
