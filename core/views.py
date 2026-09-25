@@ -92,21 +92,33 @@ def course_detail(request, course_id):
 
 
 
+@login_required
 def enroll_course(request, course_id):
     course = get_object_or_404(Course, id=course_id)
+
     enrollment, created = Enrollment.objects.get_or_create(
         user=request.user,
         course=course
     )
 
     if created:
-        messages.success(request, f"You have successfully enrolled in {course.title}!")
-        # Redirect straight to quiz list for this course
+        messages.success(
+            request,
+            f"You have successfully enrolled in {course.title}!"
+        )
+
+        # First-time enrollment → show quiz
         return redirect("quiz_list", course_id=course.id)
+
     else:
-        messages.info(request, f"You are already enrolled in {course.title}.")
-        # Redirect to dashboard if already enrolled
+        messages.info(
+            request,
+            f"You are already enrolled in {course.title}."
+        )
+
         return redirect("dashboard")
+
+
 
 
 
