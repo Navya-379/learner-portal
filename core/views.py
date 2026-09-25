@@ -90,6 +90,7 @@ def course_detail(request, course_id):
 
 
 
+
 @login_required
 def enroll_course(request, course_id):
     course = get_object_or_404(Course, id=course_id)
@@ -100,7 +101,6 @@ def enroll_course(request, course_id):
     )
 
     if created:
-        # Create progress record for the new enrollment
         Progress.objects.get_or_create(
             user=request.user,
             enrollment=enrollment,
@@ -120,10 +120,7 @@ def enroll_course(request, course_id):
             f"You are already enrolled in {course.title}."
         )
 
-    # Go back to the course details page
     return redirect("course_detail", course_id=course.id)
-
-
 
 
 
